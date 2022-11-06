@@ -1,51 +1,32 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, ChainId, useNetwork, useAddress } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  return (
+  const address = useAddress();
+  const [network, switchNetwork] = useNetwork();
+
+  // 接続されたウォレットアドレスがGoerliかどうか判定
+  if (address && network && network.data.chain?.id !== ChainId.Goerli) {
+    return (
+      <div className={styles.container}>
+        <main className={styles.main}>
+          <h1 className={styles.title}>ネットワークをGoerliに切り替えてください</h1>
+          <br/>
+          <div>このアプリはGoerliテストネットでのみ動作します。</div>
+          <div>ウォレットから接続中のネットワークを切り替えてください。</div>
+        </main>
+      </div>
+    );
+  } else return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="http://thirdweb.com/">thirdweb</a>!
+          Welcome to VisualizeDAO
         </h1>
-
-        <p className={styles.description}>
-          Get started by configuring your desired network in{" "}
-          <code className={styles.code}>pages/_app.tsx</code>, then modify the{" "}
-          <code className={styles.code}>pages/index.tsx</code> file!
-        </p>
-
+        <br/>
         <div className={styles.connect}>
           <ConnectWallet />
-        </div>
-
-        <div className={styles.grid}>
-          <a href="https://portal.thirdweb.com/" className={styles.card}>
-            <h2>Portal &rarr;</h2>
-            <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
-            </p>
-          </a>
-
-          <a href="https://thirdweb.com/dashboard" className={styles.card}>
-            <h2>Dashboard &rarr;</h2>
-            <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
-            </p>
-          </a>
-
-          <a
-            href="https://portal.thirdweb.com/templates"
-            className={styles.card}
-          >
-            <h2>Templates &rarr;</h2>
-            <p>
-              Discover and clone template projects showcasing thirdweb features.
-            </p>
-          </a>
         </div>
       </main>
     </div>
