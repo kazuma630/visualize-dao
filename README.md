@@ -1,35 +1,33 @@
-## Getting Started
+## 概要
 
-Create a project using this example:
+### 背景
+DAOを活用した働き方の可能性に興味がある。
+一方で、現状のDAOは貢献内容の可視化プロセスが仕組み化されておらず、貢献に対するインセンティブ設計が属人化している例が多いと感じている。
+このような問題に対する課題解決を試みることで、DAOの可能性を1mmでも押し広げられたらと思い制作に至った。
 
-```bash
-npx thirdweb create --template next-typescript-starter
-```
+### 作成したDAOの活用フロー
+Visualize DAOというDAOを作成した。
+大まかに下記のようなイメージで、貢献内容が可視化されたDAOとして機能するよう考えた。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. 作りたいプロダクトを持つアイデアマンと技術を持つエンジニア・デザイナーがVisualize DAOに参加（メンバーシップNFTを付与。理想はSBT）
+2. DAO内で、アイデアマンがプロダクトを登録
+3. DAO内で、技術者はプロダクト概要の閲覧・応募
+4. アイデアマンと技術者がマッチング → プロダクト単位でグループチャットが形成
+5. 開発タイム
+6. 開発終了後、プロダクトに参加した各メンバーにアンケートを依頼（自身の貢献内容、自己評価）
+7. 自身以外の貢献を評価 （ガバナンストークンを使って良いと思ったコントリビュータに投票、360度評価）
+8. 投票結果に基づいてトークン（インセンティブ）を自動配布
 
-On `pages/_app.tsx`, you'll find our `ThirdwebProvider` wrapping your app, this is necessary for our [hooks](https://portal.thirdweb.com/react) and
-[UI Components](https://portal.thirdweb.com/ui-components) to work.
+2~4はdiscordで一旦代用。最終的には依存せず、DAO内で完結するところまでいきたい。（discord自体がDAOに最適化されていない。）
+コントリビュート後〜インセンティブをもらうまでのステップが多い＆複雑なので、ステップを踏むメリットの訴求および簡素化は要検討。
 
-### Deploy to IPFS
+### 使用したtech stacks
+- typescript
+- React(next.js)
+- ThirdWeb(solidity)
 
-Deploy a copy of your application to IPFS using the following command:
+### deployしたContract
+https://goerli.etherscan.io/address/0x9bfa6f50e91292e3f67cebe42f761d1362a75e50
 
-```bash
-yarn deploy
-```
-
-## Learn More
-
-To learn more about thirdweb and Next.js, take a look at the following resources:
-
-- [thirdweb React Documentation](https://docs.thirdweb.com/react) - learn about our React SDK.
-- [thirdweb TypeScript Documentation](https://docs.thirdweb.com/typescript) - learn about our JavaScript/TypeScript SDK.
-- [thirdweb Portal](https://docs.thirdweb.com) - check our guides and development resources.
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-
-You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
-
-## Join our Discord!
-
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+### demo URL
+https://d.kuku.lu/ee53db7ec
